@@ -32,7 +32,6 @@ It includes touch navigation to swipe between different informations feeds.
 Each detail information can be accessed by clicking on it.
 
 
-
 Provided for free by Intermedia Paris.
 
 Intermedia Paris provides cross-platform technologies for developing web applications on multiple targets and devices (mobile, tablets, desktop, and TV).
@@ -41,7 +40,7 @@ If you have such a need, contact us at contact@im-paris.fr
 
 
 Keywords:
-French,Tech,French Tech,Intermedia,Paris,France,technology,iOS,Android,iPhon,iPhon.fr,FrAndroid,frenchiPhone,french,iPhone
+French Tech,Intermedia,Paris,France,technology,iOS,Android,iPhon,iPhon.fr,FrAndroid,frenchiPhone
 
 contact@im-paris.fr
 Support URL http://www.silexlabs.org/groups/labs/cocktail/forum/
@@ -68,9 +67,6 @@ Les flux d'informations sélectionnés sont: iPhon.fr, FrAndroid and frenchiPhone.
 Elle inclut une navigation "touch" qui permet de passer d'un flux à l'autre par glissement d'un doigt.
 Chaque information détaillée peut être accédée en cliquant sur l'icone correspondante.
 
-Cette application fonctionne en mode portrait et paysage.
-
-
 
 Application proposée gratuitement par Intermedia Paris
 
@@ -80,10 +76,10 @@ N'hésitez pas à nous contacter si vous avez ce type de besoin: contact@im-paris.
 
 
 Mots clés:
-French,Tech,French Tech,Intermedia,Paris,France,technologie,iOS,Android,iPhon,iPhon.fr,FrAndroid,frenchiPhone,french,iPhone
+French,Tech,Intermedia,Paris,France,technologie,iOS,Android,iPhon,FrAndroid,frenchiPhone
 
 contact@im-paris.fr
-Support URL http://www.silexlabs.org/groups/labs/cocktail/forum/
+Support URL http://www.intermedia-paris.fr
 
 1.0.1
 Mise à jour des icônes et des splashscreens
@@ -409,15 +405,16 @@ Update 2012-12-28:
 -click sur une cellule => detail, puis back => retour tout en haut de la liste, le scroll n'est pas conservé => OK
 -mettre un bouton pour switcher entre les flux online et offline (offline par défaut) => OK
 -essayer d'initialiser l'appli avec les données en ligne, et si on detecte une erreur de connexion, charger les données locales => OK
--rajouter l’attribut target=”_blank” aux ancres pour que le liens s'ouvrent en-dehors de l'appli => OK
+-rajouter l’attribut target="_blank" aux ancres pour que le liens s'ouvrent en-dehors de l'appli => OK
 -utiliser une liste à 1 cellule par ligne pour le flux 3 => OK
 -premiere page avec thumb + text => OK
 -photos se chargent "en commencant par le bas" au lieu du haut => OK
+-compilation PhoneGap => OK
+-mise à jour AppStore Apple, Google & windows => OK
 -faire une homepage & enlever les 5 première vignettes du flux principal ?
 -on peut sans doute encore améliorer la mise en page des 2 1eres lignes... a discuter avec pol
 -une petite interpolation sur les images cropées ?
--compilation PhoneGap
--mise à jour AppStore Apple, Google & windows
+-freeze sur iphone 4S lors du passage en mode paysage => mis en mode portrait seulement
 
 Check 02/01/12 Alex & Yannick
 -notif nouveaux item activée par click
