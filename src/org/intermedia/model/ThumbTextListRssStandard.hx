@@ -78,18 +78,19 @@ class ThumbTextListRssStandard
 					// if node is a description
 					if (itemParam.nodeName == "description")
 					{
-						// get and clean the node text
-						cell.description = removeIFrames(cleanText(itemParam.firstChild().nodeValue));
+						// processes the content
+						cell.description = processContent(itemParam.firstChild().nodeValue);
+						
 						// get the thumb image
-						if(cell.thumbUrl == "") cell.thumbUrl = getThumb(cell.description);
+						if (cell.thumbUrl == "") cell.thumbUrl = getThumb(cell.description);
 						
 					}
 					
 					// if node is a content
 					if (itemParam.nodeName == "content:encoded")
 					{
-						// get and clean the node text
-						cell.content = removeIFrames(cleanText(itemParam.firstChild().nodeValue));
+						// processes the content
+						cell.content = processContent(itemParam.firstChild().nodeValue);
 						
 						// get the thumb image
 						if(cell.thumbUrl == "") cell.thumbUrl = getThumb(cell.content);
@@ -116,6 +117,41 @@ class ThumbTextListRssStandard
 	}
 	
 	/**
+	 * Process the content:
+	 * -remove iframes
+	 * -force all anchors to open as external links
+	 * -get thumb
+	 * 
+	 * @param	content
+	 * @return
+	 */
+	static function processContent(content:String):String
+	{
+		var processedContent:String = content;
+		
+		// get and clean the node text
+		processedContent = removeIFrames(cleanText(content));
+		
+		// force all anchors to open as external links otherwise create navigations issues
+		var node:HtmlDom;
+		node = Lib.document.createElement("div");
+		node.innerHTML = processedContent;
+		for (i in 0...node.getElementsByTagName("a").length)
+		{
+			node.getElementsByTagName("a")[i].setAttribute("target", "_blank");
+		}
+		
+		// make sure images and texts are below each other and not next to each other
+		for (i in 0...node.getElementsByTagName("img").length)
+		{
+			node.getElementsByTagName("img")[i].style.cssFloat="none";
+			node.getElementsByTagName("img")[i].style.display = "block";
+		}
+		
+		return node.innerHTML;
+	}
+	
+	/**
 	 * Cleans a text by converting html codes and html entities in its equivalent
 	 * 
 	 * @param	text	dirty string
@@ -126,7 +162,12 @@ class ThumbTextListRssStandard
 		return(StringTools.htmlUnescape(cleanCharCodes(text)));
 	}
 	
-	
+	/**
+	 * remove iframe as create issues where youtube links are opened when clicking on list items
+	 * 
+	 * @param	text
+	 * @return
+	 */
 	static private function removeIFrames(text:String):String
 	{
 		// get thumbnail from description
@@ -146,7 +187,6 @@ class ThumbTextListRssStandard
 			cleanedString = StringTools.replace(cleanedString, iframeString, "");
 			
 			iframeStartIndex = cleanedString.indexOf(IFRAME_START_STRING);
-			
 		}
 		return cleanedString;
 	}
